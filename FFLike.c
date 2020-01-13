@@ -39,7 +39,8 @@ printf("C'est a vous d'agir !\n 1 -Attaquer(10)\n 2 -Defense(Attaque adverses di
 		}
 
 
-
+pMHeros++;
+pMMonstre++;
 pointsDeVieMonstre--;
 
 }
