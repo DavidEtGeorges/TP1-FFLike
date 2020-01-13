@@ -1,14 +1,15 @@
 #include <stdio.h>
 
 int main(){
-int pointsDeVieMonstre = 1;
-int pointsDeVieHeros = 1;
+int pointsDeVieMonstre = 20;
+int pointsDeVieHeros = 20;
 int pMMonstre = 0;
 int pMHeros = 0;
 int action = 0;
 int jaugePoisonHeros;
 int jaugePoisonMonstre;
 int protection = 0;
+int fin = 2;
 
 while(pointsDeVieMonstre > 0 && pointsDeVieHeros > 0){
 printf("------------------------------\n");
@@ -23,7 +24,10 @@ printf("C'est a vous d'agir !\n 1 -Attaquer(10)\n 2 -Defense(Attaque adverses di
 		}while(action < 1 && action > 3);
 		if(action == 1){
 			pointsDeVieMonstre = pointsDeVieMonstre-10;
-			printf("Le monstre a perdu 10 PV !\n Il lui reste %d",pointsDeVieMonstre);
+			printf("Le monstre a perdu 10 PV ! Il lui reste %d\n",pointsDeVieMonstre);
+			printf("Le monstre risposte ! Il vous inflige 2 pv\n");
+			pointsDeVieHeros = pointsDeVieHeros - 2;
+			printf("Il vous reste %d pv\n",pointsDeVieHeros);
 		}
 		if(action == 2){
 			protection++;
@@ -41,13 +45,21 @@ printf("C'est a vous d'agir !\n 1 -Attaquer(10)\n 2 -Defense(Attaque adverses di
 
 pMHeros++;
 pMMonstre++;
+printf("Vous et le monstre gagnez un PM !\n");
+if(pointsDeVieHeros <= 0){
+	fin++;
 }
-printf("Perdu !");
+if(pointsDeVieMonstre <= 0){
+	fin--;
+}
+printf("_______________________________________________________________\n");
+}
 
-
-
-
-
-
+if(fin == 3){
+	printf("Vous avez perdu !\n");
+}
+if(fin == 1){
+	printf("Vous avez gagné !\n");
+}
 return 0;
 }
